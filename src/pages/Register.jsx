@@ -12,29 +12,36 @@ const Register = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
+  const validate = () => {
+    if (!name.trim()) {
+      setError('Full name is required');
+      return false;
+    }
+    if (!email.trim()) {
+      setError('Email is required');
+      return false;
+    }
+    if (!/\S+@\S+\.\S+/.test(email)) {
+      setError('Please enter a valid email address');
+      return false;
+    }
+    if (password.length < 6) {
+      setError('Password must be at least 6 characters');
+      return false;
+    }
+    if (password !== confirmPassword) {
+      setError('Passwords do not match');
+      return false;
+    }
+    return true;
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
     setSuccess('');
     
-    // Validation
-    if (!name.trim()) {
-      setError('Name is required');
-      return;
-    }
-    
-    if (!email.trim()) {
-      setError('Email is required');
-      return;
-    }
-    
-    if (password.length < 6) {
-      setError('Password must be at least 6 characters');
-      return;
-    }
-    
-    if (password !== confirmPassword) {
-      setError('Passwords do not match');
+    if (!validate()) {
       return;
     }
     
@@ -61,11 +68,12 @@ const Register = () => {
           navigate('/login', { state: { message: 'Registration successful! Please login.' } });
         }, 2000);
       } else {
-        setError(data.message || 'Registration failed');
+        // Display the actual error message from backend
+        setError(data.message || 'Registration failed. Please try again.');
       }
     } catch (err) {
       console.error('Registration error:', err);
-      setError('Network error. Please try again.');
+      setError('Network error. Please make sure the backend server is running.');
     } finally {
       setLoading(false);
     }
@@ -154,7 +162,7 @@ const Register = () => {
             Already have an account? <Link to="/login">Login here</Link>
           </Typography>
           <Typography variant="caption" color="text.secondary" sx={{ mt: 1, display: 'block' }}>
-            Demo accounts: Use PowerShell command to create users
+            Admin: admin@paradise.local / Admin123!
           </Typography>
         </Box>
       </Paper>

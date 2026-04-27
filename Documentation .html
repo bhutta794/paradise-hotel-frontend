@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paradise Hotel - Project Documentation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #1B5E20 0%, #2E7D32 50%, #388E3C 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            border-radius: 0 0 20px 20px;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* Navigation */
+        .nav {
+            background: white;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 20px;
+            z-index: 100;
+        }
+
+        .nav ul {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            list-style: none;
+        }
+
+        .nav a {
+            color: #2E7D32;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 16px;
+            border-radius: 20px;
+            transition: all 0.3s;
+        }
+
+        .nav a:hover {
+            background: #2E7D32;
+            color: white;
+        }
+
+        /* Cards */
+        .card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .card h2 {
+            color: #2E7D32;
+            border-bottom: 3px solid #2E7D32;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .card h3 {
+            color: #1B5E20;
+            margin: 20px 0 10px 0;
+        }
+
+        /* Grid */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .feature-box {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            border-left: 4px solid #2E7D32;
+        }
+
+        .feature-box h3 {
+            margin-top: 0;
+            color: #2E7D32;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background: #2E7D32;
+            color: white;
+        }
+
+        tr:hover {
+            background: #f5f5f5;
+        }
+
+        /* Code blocks */
+        pre {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            margin: 15px 0;
+        }
+
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            color: #2E7D32;
+        }
+
+        /* Badges */
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .badge-success {
+            background: #4CAF50;
+            color: white;
+        }
+
+        .badge-warning {
+            background: #FFC107;
+            color: #333;
+        }
+
+        .badge-info {
+            background: #2196F3;
+            color: white;
+        }
+
+        /* Status indicators */
+        .status-yes {
+            color: #4CAF50;
+            font-weight: bold;
+        }
+
+        .status-no {
+            color: #f44336;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 30px;
+            background: #2E7D32;
+            color: white;
+            border-radius: 10px;
+            margin-top: 40px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            .nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            table {
+                font-size: 12px;
+            }
+            th, td {
+                padding: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>🏨 Paradise Hotel</h1>
+            <p>Full-Stack Hotel Booking Platform</p>
+            <p style="margin-top: 10px; font-size: 0.9rem;">Web Programming Practical Project</p>
+        </div>
+
+        <!-- Navigation -->
+        <div class="nav">
+            <ul>
+                <li><a href="#overview">Overview</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#tech-stack">Tech Stack</a></li>
+                <li><a href="#structure">Structure</a></li>
+                <li><a href="#setup">Setup</a></li>
+                <li><a href="#api">API</a></li>
+                <li><a href="#screenshots">Screenshots</a></li>
+            </ul>
+        </div>
+
+        <!-- Overview Section -->
+        <div class="card" id="overview">
+            <h2>📋 Project Overview</h2>
+            <p><strong>Paradise Hotel</strong> is a complete hotel booking platform that allows users to search for available rooms, make reservations, and manage their bookings. The platform includes a comprehensive admin panel for managing locations, rooms, and viewing all reservations with analytics dashboards.</p>
+            <br>
+            <p>The application consumes a provided backend API (Express + SQLite) and presents a complete frontend experience using React with Material-UI components.</p>
+        </div>
+
+        <!-- Features Section -->
+        <div class="card" id="features">
+            <h2>✨ Features Implemented</h2>
+            
+            <h3>Public / User Features</h3>
+            <div class="grid">
+                <div class="feature-box">
+                    <h3>🔐 User Authentication</h3>
+                    <p>Register new account, Login with JWT, Protected routes</p>
+                </div>
+                <div class="feature-box">
+                    <h3>🔍 Room Search</h3>
+                    <p>Search by dates, guest count, hotel name, city, rating, amenities</p>
+                </div>
+                <div class="feature-box">
+                    <h3>📅 Make Reservations</h3>
+                    <p>Book available rooms for selected dates</p>
+                </div>
+                <div class="feature-box">
+                    <h3>❌ Cancel Reservations</h3>
+                    <p>Cancel active reservations from My Reservations page</p>
+                </div>
+                <div class="feature-box">
+                    <h3>📋 My Reservations</h3>
+                    <p>View all personal bookings with status</p>
+                </div>
+                <div class="feature-box">
+                    <h3>📱 Responsive Design</h3>
+                    <p>Works on mobile, tablet, and desktop</p>
+                </div>
+            </div>
+
+            <h3>Admin Features</h3>
+            <div class="grid">
+                <div class="feature-box">
+                    <h3>📊 Dashboard</h3>
+                    <p>Summary cards + Charts (Line, Bar, Pie charts)</p>
+                </div>
+                <div class="feature-box">
+                    <h3>📅 All Reservations</h3>
+                    <p>View all user reservations with search/filter</p>
+                </div>
+                <div class="feature-box">
+                    <h3>🏨 Manage Locations</h3>
+                    <p>Create, Edit, Delete hotel locations</p>
+                </div>
+                <div class="feature-box">
+                    <h3>🛏️ Manage Rooms</h3>
+                    <p>Create, Edit, Delete rooms per location</p>
+                </div>
+            </div>
+
+            <h3>Static Pages</h3>
+            <div class="grid">
+                <div class="feature-box">
+                    <h3>🏠 Home Page</h3>
+                    <p>Hero section, features, featured locations</p>
+                </div>
+                <div class="feature-box">
+                    <h3>📖 About Page</h3>
+                    <p>Company story, values, properties</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tech Stack Section -->
+        <div class="card" id="tech-stack">
+            <h2>🛠️ Technology Stack</h2>
+            <table>
+                <thead>
+                    <tr><th>Layer</th><th>Technology</th><th>Version</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Frontend</td><td>React</td><td>18.3.1</td></tr>
+                    <tr><td>Frontend Build</td><td>Vite</td><td>5.4.10</td></tr>
+                    <tr><td>UI Library</td><td>Material-UI (MUI)</td><td>6.4.7</td></tr>
+                    <tr><td>HTTP Client</td><td>Axios</td><td>1.8.4</td></tr>
+                    <tr><td>Routing</td><td>React Router DOM</td><td>6.30.0</td></tr>
+                    <tr><td>Charts</td><td>Recharts</td><td>2.15.1</td></tr>
+                    <tr><td>Date Picker</td><td>React DatePicker</td><td>7.6.0</td></tr>
+                    <tr><td>Backend</td><td>Node.js / Express</td><td>5.1.0</td></tr>
+                    <tr><td>Database</td><td>SQLite (better-sqlite3)</td><td>11.8.1</td></tr>
+                    <tr><td>Authentication</td><td>JWT + bcryptjs</td><td>9.0.2 / 3.0.2</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Project Structure -->
+        <div class="card" id="structure">
+            <h2>📁 Project Structure</h2>
+            <pre>
+paradise-hotel/
+│
+├── src/                          # Frontend React Code
+│   ├── components/               # Reusable Components
+│   │   ├── Layout/               # Navbar, Footer, Layout
+│   │   ├── ProtectedRoute.jsx    # Auth route guard
+│   │   └── AdminRoute.jsx        # Admin route guard
+│   ├── pages/                    # Page Components
+│   │   ├── Home.jsx/About.jsx    # Static pages
+│   │   ├── Login.jsx/Register.jsx # Auth pages
+│   │   ├── SearchRooms.jsx       # Room search
+│   │   ├── MyReservations.jsx    # User bookings
+│   │   ├── BookRoom.jsx          # Booking confirm
+│   │   └── admin/                # Admin pages
+│   │       ├── AdminDashboard.jsx
+│   │       ├── AdminReservations.jsx
+│   │       ├── AdminLocations.jsx
+│   │       └── AdminRooms.jsx
+│   ├── context/                  # React Context
+│   │   └── AuthContext.jsx       # Auth state
+│   ├── services/                 # API Services
+│   │   └── api.js                # Axios instance
+│   ├── App.jsx/main.jsx          # Entry files
+│   └── index.css                 # Global styles
+│
+├── paradise hotel BE/            # Backend Code
+│   ├── src/
+│   │   ├── server.js             # Express server
+│   │   ├── db.js                 # SQLite setup
+│   │   ├── config.js             # Configuration
+│   │   ├── middleware/auth.js    # JWT verification
+│   │   └── utils.js              # Utilities
+│   ├── data/                     # SQLite database
+│   └── package.json
+│
+├── package.json                  # Frontend deps
+├── start.bat                     # Windows launcher
+└── README.md                     
+</pre>
+        </div>
+
+        <!-- Setup Instructions -->
+        <div class="card" id="setup">
+            <h2>🚀 Installation & Setup</h2>
+            
+            <h3>Prerequisites</h3>
+            <ul>
+                <li>Node.js (v18 or higher)</li>
+                <li>npm (comes with Node.js)</li>
+            </ul>
+
+            <h3>Step 1: Clone Repository</h3>
+            <pre><code>git clone https://github.com/bhutta794/paradise-hotel-frontend.git
+cd paradise-hotel-frontend/paradise-hotel</code></pre>
+
+            <h3>Step 2: Install Dependencies</h3>
+            <pre><code># Install frontend dependencies
+npm install
+
+# Install backend dependencies
+cd "paradise hotel BE"
+npm install
+cd ..</code></pre>
+
+            <h3>Step 3: One-Command Installation (Alternative)</h3>
+            <pre><code>npm run install-all</code></pre>
+
+            <h3>Step 4: Run the Application</h3>
+            <pre><code>npm run dev</code></pre>
+
+            <h3>Access the Application</h3>
+            <table>
+                <tr><td>Frontend</td><td><code>http://localhost:5173</code></td></tr>
+                <tr><td>Backend API</td><td><code>http://localhost:4000</code></td></tr>
+                <tr><td>API Health Check</td><td><code>http://localhost:4000/api/health</code></td></tr>
+            </table>
+        </div>
+
+        <!-- Admin Access -->
+        <div class="card">
+            <h2>👑 Admin Access</h2>
+            <table>
+                <tr><th>Field</th><th>Value</th></tr>
+                <tr><td>Email</td><td><code>admin@paradise.local</code></td></tr>
+                <tr><td>Password</td><td><code>Admin123!</code></td></tr>
+            </table>
+            <br>
+            <h3>Admin Pages:</h3>
+            <ul>
+                <li>Dashboard: <code>http://localhost:5173/admin</code></li>
+                <li>All Reservations: <code>http://localhost:5173/admin/reservations</code></li>
+                <li>Manage Locations: <code>http://localhost:5173/admin/locations</code></li>
+                <li>Manage Rooms: <code>http://localhost:5173/admin/rooms</code></li>
+            </ul>
+        </div>
+
+        <!-- API Endpoints -->
+        <div class="card" id="api">
+            <h2>📡 API Endpoints</h2>
+            
+            <h3>Public Endpoints</h3>
+            <table>
+                <tr><th>Method</th><th>Endpoint</th><th>Description</th></tr>
+                <tr><td>POST</td><td><code>/api/auth/register</code></td><td>Create user account</td></tr>
+                <tr><td>POST</td><td><code>/api/auth/login</code></td><td>Login + JWT token</td></tr>
+                <tr><td>GET</td><td><code>/api/locations</code></td><td>All hotel locations</td></tr>
+                <tr><td>GET</td><td><code>/api/rooms/availability</code></td><td>Search available rooms</td></tr>
+            </table>
+
+            <h3>Protected User Endpoints (JWT Required)</h3>
+            <table>
+                <tr><th>Method</th><th>Endpoint</th><th>Description</th></tr>
+                <tr><td>GET</td><td><code>/api/auth/me</code></td><td>Current user info</td></tr>
+                <tr><td>POST</td><td><code>/api/reservations</code></td><td>Create reservation</td></tr>
+                <tr><td>GET</td><td><code>/api/reservations/me</code></td><td>User's reservations</td></tr>
+                <tr><td>DELETE</td><td><code>/api/reservations/:id</code></td><td>Cancel reservation</td></tr>
+            </table>
+
+            <h3>Admin Endpoints (Admin JWT Required)</h3>
+            <table>
+                <tr><th>Method</th><th>Endpoint</th><th>Description</th></tr>
+                <tr><td>GET</td><td><code>/api/admin/dashboard</code></td><td>Dashboard stats</td></tr>
+                <tr><td>GET</td><td><code>/api/admin/reservations</code></td><td>All reservations</td></tr>
+                <tr><td>GET/POST/PUT/DELETE</td><td><code>/api/admin/locations</code></td><td>Location CRUD</td></tr>
+                <tr><td>GET/POST/PUT/DELETE</td><td><code>/api/admin/rooms</code></td><td>Room CRUD</td></tr>
+            </table>
+        </div>
+
+        <!-- Requirements Checklist -->
+        <div class="card">
+            <h2>✅ Requirements Checklist</h2>
+            <table>
+                <tr><th>Requirement</th><th>Status</th></tr>
+                <tr><td>Creating an account</td><td class="status-yes">✅ Complete</td></tr>
+                <tr><td>Logging in an account</td><td class="status-yes">✅ Complete</td></tr>
+                <tr><td>Searching available rooms</td><td class="status-yes">✅ Complete</td></tr>
+                <tr><td>Filtering hotels (name, city, rating, parking, wellness)</td><td class="status-yes">✅ Complete</td></tr>
+                <tr><td>Creating a reservation</td><td class="status-yes">✅ Complete</td></tr>
+                <tr><td>Cancelling a reservation</td><td class="status-yes">✅ Complete</td></tr>
+                <tr><td>Displaying user reservations</td><td class="status-yes">✅ Complete</td></tr>
+                <tr><td>Admin dashboard with charts</td><td class="status-yes">✅ Complete</td></tr>
+                <tr><td>Admin reservations list</td><td class="status-yes">✅ Complete</td></tr>
+                <tr><td>Admin locations management (CRUD)</td><td class="status-yes">✅ Complete</td></tr>
+                <tr><td>Home page</td><td class="status-yes">✅ Complete</td></tr>
+                <tr><td>About page</td><td class="status-yes">✅ Complete</td></tr>
+                <tr><td>Version control with meaningful commits</td><td class="status-yes">✅ Complete</td></tr>
+                <tr><td>React + Axios + MUI</td><td class="status-yes">✅ Complete</td></tr>
+                <tr><td>Authentication logic & protected routes</td><td class="status-yes">✅ Complete</td></tr>
+                <tr><td>Form validation & error handling</td><td class="status-yes">✅ Complete</td></tr>
+            </table>
+        </div>
+
+        <!-- Troubleshooting -->
+        <div class="card">
+            <h2>🔧 Troubleshooting</h2>
+            <table>
+                <tr><th>Issue</th><th>Solution</th></tr>
+                <tr><td>Backend won't start</td><td>Check if port 4000 is free: <code>netstat -ano | findstr :4000</code></td></tr>
+                <tr><td>Frontend can't connect</td><td>Verify backend is running at <code>http://localhost:4000</code></td></tr>
+                <tr><td>Registration fails</td><td>Password must be 6+ characters, email must be unique</td></tr>
+                <tr><td>Images not showing</td><td>Use direct image URLs (ending in .jpg, .png)</td></tr>
+                <tr><td>Port conflicts</td><td>Change PORT in backend/.env and API_BASE_URL in frontend/src/services/api.js</td></tr>
+            </table>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>🏨 Paradise Hotel - Full Stack Application</p>
+            <p>Web Programming Practical Project | React + Express + SQLite</p>
+            <p style="margin-top: 15px; font-size: 0.8rem;">© 2026 Paradise Hotel. All rights reserved.</p>
+        </div>
+    </div>
+</body>
+</html>
